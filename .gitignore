@@ -1,7 +1,7 @@
 # data-files
 *.dat
 *.csv
-assets/data/raw
+# assets/data/raw
 !assets/data/raw/README.md
 
 # misc:
