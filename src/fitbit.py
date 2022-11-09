@@ -43,6 +43,7 @@ class FitBit:
         self.dfs = []
 
     def read_data(self):
+        """Main function for reading all relevant data types."""
 
         self.read_sleep_score()
         self.read_sleep()
@@ -94,6 +95,7 @@ class FitBit:
         self.df = self.df.fillna(0)
 
     def read_profile(self):
+        """Read profile info."""
 
         profile = pd.read_csv(self.filepath + "Personal & Account/Profile.csv")
         self.age = datetime.now().year - int(profile["date_of_birth"][0][:4])
@@ -102,6 +104,7 @@ class FitBit:
         self.height = profile["height"][0]
         self.bmi = self.weight / ((self.height / 100) ** 2)
 
+        # Uncomment to print info
         # print(self.age)
         # print(self.gender)
         # print(self.weight)
@@ -152,28 +155,11 @@ class FitBit:
 
         sleep_df = pd.concat(sleep_dfs)
 
-        # self.sleep = pd.read_json(filepaths[0])
-        # a = self.sleep["levels"][0]["summary"]["deep"]
-        # print(a)
-
-        # self.sleep["dateOfSleep"] = pd.to_datetime(
-        #     self.sleep["dateOfSleep"]
-        # ).dt.strftime("%Y-%m-%d")
         sleep_df["dateOfSleep"] = pd.to_datetime(sleep_df["dateOfSleep"])
         sleep_df.set_index("dateOfSleep", inplace=True)
 
         # Delete rows which does not contain main sleep
         sleep_df = sleep_df[sleep_df.mainSleep == True]
-
-        # for i in range(len(self.sleep)):
-
-        #     if self.sleep["infoCode"] == 0:
-        #         for level in LEVELS:
-        #             self.sleep[f"{level}_count"] = self.sleep["levels"][i]["summary"][level]["count"]
-        #             self.sleep[f"{level}_minutes"] = self.sleep["levels"][i]["summary"][level]["minutes"]
-
-        # # del self.sleep["type"]
-        # del self.sleep["levels"]
 
         self.dfs.append(sleep_df)
 
