@@ -14,6 +14,7 @@ Basic steps to produce a model:
 1. Restructure raw data:
 
 ```
+python3 src/fitbit.py [path/to/fitbit/data]
 ```
 
 2. Place the data files (output of previous step) in `assets/data/raw`.
