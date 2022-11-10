@@ -5,6 +5,29 @@ Estimating Fatigue Assessment Score (FAS) using machine learning.
 This is a project using [DVC](https://dvc.org/) for setting up a flexible and
 robust pipeline for machine learning experiments.
 
+## Installation
+
+1. Download the source code using `git`: [github.com/ejhusom/bluehealthpass-ml](https://github.com/ejhusom/bluehealthpass-ml)
+
+```
+git clone https://github.com/ejhusom/bluehealthpass-ml.git
+```
+
+2. Installing required Python-packages:
+
+```
+cd bluehealthpass-ml
+mkdir venv
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+3. Set up DVC:
+
+```
+dvc init --no-scm
+```
 
 ## Usage
 
