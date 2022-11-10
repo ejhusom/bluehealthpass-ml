@@ -37,22 +37,19 @@ venv*
 
 # large files
 model_tuning/
-models/
-
-# project-specific files
-assets/plots/
-assets/profile/
-assets/metrics/
-assets/scalers/
-assets/predictions/
-assets/features/
-models.json
 
 # Files related to compilation of cython
 build/
 *.so
 cutils.c
 
-# Remove these to use DVC with Git:
+# Remove these to use DVC with Git (NB: Some of these contain large files):
 .dvc*
 dvc.lock
+assets/plots/
+assets/profile/
+assets/metrics/
+assets/scalers/
+assets/predictions/
+assets/features/
+assets/models/
