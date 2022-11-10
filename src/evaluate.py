@@ -21,7 +21,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import seaborn as sn
 import tensorflow as tf
-import tensorflow_probability as tfp
 import yaml
 from joblib import load
 from plotly.subplots import make_subplots
@@ -36,13 +35,6 @@ from sklearn.metrics import (
 )
 from sklearn.neighbors import KNeighborsRegressor
 from tensorflow.keras import metrics, models
-
-import neural_networks as nn
-
-tfk = tf.keras
-tfkl = tf.keras.layers
-tfpl = tfp.layers
-tfd = tfp.distributions
 
 import neural_networks as nn
 from config import (

@@ -1,21 +1,12 @@
 profile:
-    # dataset: fitbit_bhp_simula_combined_v1
-    # dataset: simula_fitbit_data_v1
-    # dataset: bhp_fitbit_data_v1
-    # dataset: bhp_fitbit_data_v2
-    # dataset: bhp_fitbit_data_v4
-  # dataset: bhp_fitbit_data_v7
-  # dataset: bhp_fitbit_data_v8_val
-  dataset: bhp_fitbit_data_v8_val_stratified
-    # dataset: bhp_test
-    # dataset: bhp_fas_input
+    dataset:
 
 clean:
     # target: fas_category
   target: fas
   classification: false
   onehot_encode_target: false
-  combine_files: True
+  combine_files: False
   percentage_zeros_threshold: 1.0
   correlation_metric: pearson
   input_max_correlation_threshold: 1.0
@@ -31,86 +22,10 @@ featurize:
   - levels.summary.light.minutes
   - weight
   - sedentary_minutes
-        # Negative correlation:
+  # Negative correlation:
   - gender
   - height
   - very_active_minutes
-    # Extra for validation group:
-  # - distance_range
-  # - distance_max
-  # - heart_rate_bpm_range
-  # - very_active_minutes
-  # - levels.summary.wake.thirtyDayAvgMinutes
-  # - levels.summary.light.thirtyDayAvgMinutes
-  # - minutesAsleep
-    #
-        # Extra stuff
-        # - levels.summary.rem.count
-        # - calories
-        # - heart_rate_bpm_std
-        # - lightly_active_minutes
-        # - bmr
-        # - distance
-        # - deep_sleep_in_minutes
-        # - levels.summary.rem.minutes
-        # - steps
-
-        # - bmr
-        # - steps 
-
-        # - heart_rate_bpm_min
-        # - heart_rate_bpm_mean
-        # - weight
-        # - sedentary_minutes
-        # - resting_heart_rate
-        # - bmr
-        # STOP
-        # - very_active_minutes
-        # - steps
-        # STOP
-        # - bmi
-        # - levels.summary.wake.count
-        # - levels.summary.light.count
-        # - height
-        # - very_active_minutes
-        # - steps
-        # - distance
-        # - lightly_active_minutes
-        # - efficiency
-
-        # - deep_sleep_in_minutes
-        # - resting_heart_rate
-        # - calories_max
-        # - calories_min
-        # - distance_mean
-        # - distance_max
-        # - steps
-        # - age
-        # - gender
-        # - height
-        # - STRESS_SCORE
-        # - fas_2
-        # - overall_score
-        # - composition_score
-        # - revitalization_score
-        # - duration_score
-        # - deep_sleep_in_minutes
-        # - resting_heart_rate
-        # - restlessness
-        # - calories_max
-        # - calories_min
-        # - distance_mean
-        # - distance_max
-        # - heart_rate_bpm_min
-        # - heart_rate_bpm_mean
-        # - steps
-        # - age
-        # - gender
-        # # - height
-        # - weight
-        # # - bmi
-        # - sedentary_minutes
-        # - minutesAsleep
 
     # By setting this to True, the add_-options below are overrided.
   use_all_engineered_features_on_all_variables: false
@@ -148,21 +63,20 @@ featurize:
     # List features here to remove the raw variables after engineering features
     # from them
   remove_features:
-        # - variable1
-  - logId
-  - rmssd
-  - high_frequency
-  - low_frequency
-  - coverage
-  - levels.summary.restless.count
-  - levels.summary.restless.minutes
-  - levels.summary.awake.count
-  - levels.summary.awake.minutes
-  - levels.summary.asleep.minutes
+    - logId
+    - rmssd
+    - high_frequency
+    - low_frequency
+    - coverage
+    - levels.summary.restless.count
+    - levels.summary.restless.minutes
+    - levels.summary.awake.count
+    - levels.summary.awake.minutes
+    - levels.summary.asleep.minutes
   target_min_correlation_threshold: 0.0
 
 split:
-  train_split: 0.6
+  train_split: 0.7
   shuffle_files: False
   calibrate_split: 0.0
   shuffle_samples_before_split: False
@@ -170,11 +84,10 @@ split:
 scale:
   input: minmax
   output:
-    # output: log
 
 sequentialize:
-  window_size: 7
-  overlap: 6
+  window_size: 5
+  overlap: 4
   target_size: 1
   shuffle_samples: true
   future_predict: false
