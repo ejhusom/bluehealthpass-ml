@@ -439,7 +439,9 @@ def restructure_and_save_data(filepath):
             print(f"Processing data in {directory}...")
 
             subject_number = directory.split("#")[-1]
-            if subject_number == "25":
+            
+            # Subject 25 and 105 does not have valid data
+            if subject_number == "25" or subject_number == "105":
                 continue
 
             fb = FitBit(

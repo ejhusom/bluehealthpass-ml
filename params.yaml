@@ -1,5 +1,6 @@
 profile:
-    dataset:
+    # dataset: bhp_v1
+    dataset: bhp_fitbit_data_v8_val_stratified
 
 clean:
     # target: fas_category
@@ -76,7 +77,7 @@ featurize:
   target_min_correlation_threshold: 0.0
 
 split:
-  train_split: 0.7
+  train_split: 0.6
   shuffle_files: False
   calibrate_split: 0.0
   shuffle_samples_before_split: False
